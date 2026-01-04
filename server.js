@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -16,13 +17,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({
-    connectionString: connectionString ? connectionString : undefined,
-    user: process.env.DB_USER || 'myuser',
-    host: process.env.DB_HOST || 'localhost',
-    database: process.env.DB_NAME || 'mydatabase',
-    password: process.env.DB_PASS || 'mypassword',
-    port: 5432,
-    ssl: isProduction ? { rejectUnauthorized: false } : false
+    connectionString: connectionString,
+    ssl: connectionString ? { rejectUnauthorized: false } : false
 });
 
 // Middleware
