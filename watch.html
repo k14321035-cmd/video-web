@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Watch — VideoHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>.player-wrap{max-width:900px;margin:24px auto 0}.controls{display:flex;justify-content:space-between;align-items:center;margin-top:12px}</style>
+</head>
+<body>
+  <header class="site-header"><div class="container"><a class="logo" href="index.html">VideoHub</a></div></header>
+
+  <main class="container player-wrap">
+    <div id="playerContainer" class="card" style="padding:0;">
+      <video id="player" class="thumb" controls style="height:480px;width:100%;background:#000">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="card-body">
+        <div id="videoTitle" class="title">Loading…</div>
+        <div class="controls">
+          <a href="index.html" class="btn-play">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function q(name){return new URLSearchParams(location.search).get(name)}
+    const file = q('v');
+    const title = q('t');
+    
+    const player = document.getElementById('player');
+    const titleEl = document.getElementById('videoTitle');
+
+    if (!file){ 
+        titleEl.textContent = 'No video specified'; 
+    } else {
+        // Decide if it needs decoding or is already a clean URL
+        const decoded = decodeURIComponent(file);
+        player.src = decoded;
+        
+        if(title) {
+            titleEl.textContent = decodeURIComponent(title);
+        } else {
+            // Fallback: try to guess from filename
+            titleEl.textContent = 'Untitled Video';
+        }
+    }
+  </script>
+</body>
+</html>

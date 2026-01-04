@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Video Maker</title>
+  <link rel="stylesheet" href="ai_video_maker.css">
+</head>
+<body>
+  <main class="container">
+    <h1>AI Video Maker (browser)</h1>
+
+    <section class="controls">
+      <div class="left">
+        <h2>Add Scene</h2>
+        <label>Text
+          <textarea id="sceneText" rows="3" placeholder="Enter scene text / caption"></textarea>
+        </label>
+        <label>Image
+          <input id="sceneImage" type="file" accept="image/*">
+        </label>
+        <label>Duration (seconds)
+          <input id="sceneDuration" type="number" min="1" value="3">
+        </label>
+        <button id="addScene">Add Scene</button>
+
+        <h3>Optional Audio (narration or music)</h3>
+        <input id="audioFile" type="file" accept="audio/*">
+        <p class="hint">If you upload audio, it will be mixed into the produced video.</p>
+      </div>
+
+      <div class="right">
+        <h2>Scenes</h2>
+        <ul id="sceneList"></ul>
+      </div>
+    </section>
+
+    <section class="preview">
+      <h2>Preview / Output</h2>
+      <canvas id="previewCanvas" width="1280" height="720"></canvas>
+      <div class="actions">
+        <button id="generate">Generate Video</button>
+        <a id="downloadLink" style="display:none">Download Video</a>
+      </div>
+      <p class="note">Note: For best results use Chrome/Edge/Firefox on desktop. Large images may increase processing time.</p>
+    </section>
+
+    <footer>
+      <small>Simple in-browser tool: creates a video from scenes. No external AI image generation included — you can paste AI-generated images into the scenes.</small>
+    </footer>
+  </main>
+
+  <script src="ai_video_maker.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VideoHub — Browse Videos</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="Simple local video browsing site" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; align-items:center;">
+            <a class="logo" href="index.html">VideoHub</a>
+            <input id="search" class="search" placeholder="Search videos...">
+        </div>
+        <div id="navRight"></div>
+      </div>
+    </header>
+
+    <main class="container" style="padding-top: 1.5rem">
+      <h1 class="page-title">All Videos</h1>
+      <div id="videoGrid" class="grid"></div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
